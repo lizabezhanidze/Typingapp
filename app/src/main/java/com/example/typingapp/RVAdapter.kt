@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 //import com.bumptech.glide.Glide
 import com.example.typingapp.R
 import com.example.typingapp.databinding.RvItemMinBinding
@@ -30,10 +33,13 @@ class RVMainAdapter : ListAdapter<RVItem, RVMainAdapter.Holder>(Comparator()) {
     class Holder(view: View): RecyclerView.ViewHolder(view) {
         val binding = RvItemMinBinding.bind(view)
         fun bind(item: RVItem) = with(binding) {
-            item.text = "Hello World"
-            imgMain.setImageResource(R.drawable.logo)
-//            pin.setImageDrawable(item.postType)
-//            Glide.with(itemView.context).load(item.postImage).into(imgMain)
+//            imgMain.setImageResource(R.drawable.logo)
+            Glide.with(itemView.context)
+                .load(item.img)
+                .transition(DrawableTransitionOptions.withCrossFade(1000))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .skipMemoryCache(true)
+                .into(imgMain)
         }
     }
 

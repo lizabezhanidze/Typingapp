@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".auth.SignupFragment"
+    android:layout_marginBottom="50dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/roundedrect"
+        android:backgroundTint="#303042"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Join Speed Typing!"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Create your account and start improving"
+            android:textColor="#CCC"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:hint="Email address"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#aaaa"
+            android:autofillHints="emailAddress"
+
+            android:background="@drawable/roundedrectoutline"
+            android:padding="15dp"
+            />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColorHint="#aaaa"
+            android:autofillHints="password"
+
+            android:background="@drawable/roundedrectoutline"
+            android:padding="15dp"
+            />
+
+        <EditText
+            android:id="@+id/etPassword2"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:textColorHint="#aaaa"
+            android:autofillHints="password"
+
+            android:background="@drawable/roundedrectoutline"
+            android:padding="15dp"
+            />
+
+        <Button
+            android:id="@+id/signUpBtn"
+            android:layout_marginTop="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundedrect"
+            android:text="Create Account"
+            />
+    </LinearLayout>
+
+</LinearLayout>

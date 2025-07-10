@@ -6,6 +6,16 @@
     app:startDestination="@id/mainFragment">
 
     <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.typingapp.AuthFragment"
+        android:label="Authorize"
+        tools:layout="@layout/fragment_auth">
+        <action
+            android:id="@+id/action_auth_to_main"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.typingapp.MainFragment"
         android:label="Typing Test"

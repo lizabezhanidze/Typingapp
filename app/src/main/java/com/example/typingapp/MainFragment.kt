@@ -16,6 +16,7 @@ import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import com.example.typingapp.utils.HapticUtils
 import kotlin.math.ceil
 import kotlin.random.Random
 
@@ -39,6 +40,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     var timeInSeconds: Long = 15
     var difficulty: Int = 0
+    var haptics: Boolean = true
+    var sfx: Boolean = true
 
     private var sessionID = Random.nextDouble().toString()
 
@@ -48,6 +51,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         val settings = requireActivity().getSharedPreferences("Settings", 0)
         timeInSeconds = settings.getLong("Time", 10)
         difficulty = settings.getInt("Difficulty", 0)
+        haptics = settings.getBoolean("Haptics", true)
+        sfx = settings.getBoolean("SFX", true)
 
         currentIndex = 0
         isStarted = false
@@ -90,12 +95,19 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                     totalCharacters += txt.length
                     val newWordData = currentWords[++currentIndex]
                     newWordData.view.setTextColor(ContextCompat.getColor(view.context, R.color.highlighted_text))
-                    currentWordData.view.setTextColor(ContextCompat.getColor(view.context, R.color.blue_700))
+                    currentWordData.view.setTextColor(ContextCompat.getColor(view.context, R.color.blue_200))
                     currentWordData.view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.transparent))
                     mainInput.text.clear()
 
                     if (newWordData.index != currentWordData.index && newWordData.index == 2) {
                         shiftWords()
+                    }
+
+                    if (sfx) {
+                        SoundPlayer.playSound(requireContext(), R.raw.pop)
+                    }
+                    if (haptics) {
+                        HapticUtils.triggerSuccessHaptic(requireContext())
                     }
                 }
             }
